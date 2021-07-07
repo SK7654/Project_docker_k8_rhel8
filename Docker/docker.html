@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="docker.css">
+    </head>
+    <head> 
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta http-equiv="Cache-control" content="public">
+        <title> DOCKER WORLD</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+       
+    <body style="text-align: center;padding-top: 20;background-image: url(https://wallpapercave.com/wp/wp4997013.jpg);">
+        <div class="col0">
+        <B><h1 style="font: size 500px";>WELCOME TO DOCKER HUB </h1></B>
+        </div>
+        <div class="col1">
+            <form>
+                <h2>LAUNCH CONTAINER</h2>
+                Enter Image Name <br/><br/> <input id = 'i1' type="text" name="x" required/><br/><br/>
+                Enter Container Name <br/><br/><input id = 'i2' type="text" name="y" required/><br/><br/>
+                <input onclick="my();cgi();" type="submit" />
+            </form>
+        </div>
+        <div class="col2">
+            <form>
+                <h2>Pull images</h2>
+                Enter Image Name <br/><br/> <input id = 'j1' type="text" name="j" required/><br/><br/>
+                <input onclick="pull1();pull2();" type="submit" />
+            </form>
+        </div>
+        <div class="col3">
+            <form>
+                <h2>Container Status </h2>
+                Check Container Status <br/><br/> <input id = 'k1' type="text" name="k" required /><br/><br/>
+                <input onclick="Status();" type="submit" />
+            </form>
+        </div>
+        <div class="col4">
+            <form>
+                <h2>images Status </h2>
+                Check Images Status <br/><br/> <input id = 'l1' type="text" name="l" required /><br/><br/>
+                <input  onclick="imgstatus();" type="submit" />
+            </form>
+        </div>
+        <div class="sec">         
+            <video autoplay loop muted>
+           <source src="docker vedio.mp4" />
+           </video>
+           </div>
+        <script>
+            function my()
+            {
+                x=document.getElementById("i1")
+                y=document.getElementById("i2")
+                a=x.value
+                b=y.value
+                alert("Image Name You Enter : " +a)
+                alert("Container Name you Enter : " +b)
+ 
+            }
+            function cgi()
+            {
+                var img=document.getElementById("i1").value
+                var cont=document.getElementById("i2").value
+              var xhr=new XMLHttpRequest();
+              xhr.open("GET" , "http://192.168.43.182/cgi-bin/docker.py?x="+img+"&y="+cont,false)
+              xhr.send()
+              var output1=xhr.responseText
+              alert(" Output : "+"\n"+output1)
+            }
+            function pull1()
+            {
+                j=document.getElementById("j1")
+                c=j.value
+                alert("Pull image Name you Enter : " +c)
+            }
+            function pull2()
+            {
+                var pull=document.getElementById("j1").value
+                var pp=new XMLHttpRequest();
+                pp.open("GET","http://192.168.43.182/cgi-bin/docker2.py?j="+pull,false)
+                pp.send()
+                var output2=pp.responseText
+                alert("Output : "+"\n"+output2)
+            }
+            function Status()
+            {
+                var Status=document.getElementById("k1").value
+                var ss=new XMLHttpRequest();
+                ss.open("GET","http://192.168.43.182/cgi-bin/docker3.py?k="+Status,false)
+                ss.send()
+                var output3=ss.responseText
+                alert("Output : "+"\n"+output3)
+            }
+            function imgstatus()
+            {
+                var imgstat=document.getElementById("l1").value
+                var tt=new XMLHttpRequest();
+                tt.open("GET","http://192.168.43.182/cgi-bin/docker4.py?l="+imgstat,false)
+                tt.send()
+                var output4=tt.responseText
+                alert("Output : "+"\n"+output4)
+            }
+        </script>
+
+
+    </body>
+</html>
